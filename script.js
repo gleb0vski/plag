@@ -102,10 +102,12 @@
             
             const nameInput = document.getElementById('formName');
             const phoneInputField = document.getElementById('formPhone');
+            const emailInput = document.getElementById('formEmail');
             const messageInput = document.getElementById('formMessage');
             
             const name = nameInput ? nameInput.value.trim() : '';
             const phone = phoneInputField ? phoneInputField.value.trim() : '';
+            const email = emailInput ? emailInput.value.trim() : '';
             const message = messageInput ? messageInput.value.trim() : '';
             
             if (!name) {
@@ -123,11 +125,18 @@
                 return;
             }
             
-            // Проверка российского номера (10 цифр после +7)
             const phoneDigits = phone.replace(/\D/g, '');
             if (phoneDigits.length < 11) {
                 if (formError) {
                     formError.textContent = 'Введите корректный номер телефона (10 цифр после +7)';
+                    formError.style.display = 'block';
+                }
+                return;
+            }
+            
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                if (formError) {
+                    formError.textContent = 'Введите корректный email';
                     formError.style.display = 'block';
                 }
                 return;
@@ -150,6 +159,7 @@
                 const formData = new FormData();
                 formData.append('name', name);
                 formData.append('phone', phone);
+                formData.append('email', email);
                 formData.append('message', message);
                 
                 const response = await fetch('send.php', {
