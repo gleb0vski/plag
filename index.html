@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="ANTI-DOMATE — ручной рерайт для повышения оригинальности, удаления ИИ-текста и разбора отчётов Антиплагиат Думейт. Работаем честно и официально.">
+    <title>ANTI-DOMATE | Повышение оригинальности, удаление ИИ, разбор отчётов</title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+<link rel="shortcut icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="modal-overlay" id="callbackModal">
+    <div class="modal">
+        <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+        <h3 style="font-size: 28px; margin-bottom: 20px;">Оставить заявку</h3>
+        <form id="orderForm">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="Номер телефона" required>
+            <textarea name="message" placeholder="Опишите вашу задачу: повышение уникальности, удаление ИИ или разбор отчета"></textarea>
+            <button type="submit" class="customButton customButton_main">Отправить заявку</button>
+            <p style="font-size: 12px; color: #9e9e9e; margin-top: 12px;">Нажимая на кнопку, вы даете согласие на обработку данных</p>
+        </form>
+    </div>
+</div>
+
+<header class="page__container" style="margin-bottom: 32px;">
+    <div class="headerPage">
+        <a href="/" class="headerPage__logo"><img class="logo-img" src="logo.png" alt=""></a>
+        
+        <div class="headerPage__nav" id="mobileMenu">
+            <a href="#" data-scroll-to="services">Повысить оригинальность</a>
+            <a href="#" data-scroll-to="services">Удалить ИИ-текст</a>
+            <a href="#" data-scroll-to="services">Разобрать отчет</a>
+            <div class="mobile-menu-extras">
+                <a href="tel:89611944469" class="mobile-phone"><i class="fas fa-phone-alt"></i> 8 961 194-44-69</a>
+                <div class="mobile-social">
+                    <a href="#" data-modal-open><i class="fab fa-telegram"></i></a>
+                    <a href="#" data-modal-open>
+                        <svg class="social-max" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="20" height="20">
+                            <path fill="currentColor" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="mobile-order-btn">
+                    <button class="customButton customButton_main _middle" data-modal-open>Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+        
+        <a href="tel:89611944469" class="headerPage__phone"><i class="fas fa-phone-alt"></i> 8 961 194-44-69</a>
+        
+        <div class="headerPage__social">
+            <a href="#" data-modal-open><i class="fab fa-telegram"></i></a>
+            <a href="#" data-modal-open>
+                <svg class="social-max" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="20" height="20">
+                    <path fill="currentColor" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="desktop-order-btn">
+            <button class="customButton customButton_main _middle" data-modal-open>Оформить заказ</button>
+        </div>
+        
+        <button class="burger-btn" id="burgerBtn" aria-label="Меню">
+            <span class="burger-icon"></span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <div class="page__container page__section" style="margin-bottom: 40px;">
+        <div class="hero">
+            <div class="hero__title">ANTI-DOMATE</div>
+            <div class="hero__sub">Поможет пройти (обойти) проверку в системе Антиплагиат Думейт</div>
+            <button class="customButton customButton_main _large" data-modal-open>МНЕ НУЖНА ПОМОЩЬ</button>
+        </div>
+    </div>
+
+    <div class="page__container page__section" id="services">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="donut-wrapper">
+                    <div class="donut-inner">
+                        <svg width="100%" height="100%" viewBox="0 0 240 240" style="display: block;">
+                            <circle cx="120" cy="120" r="116" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+                            <circle cx="120" cy="120" r="76" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+                            <circle cx="120" cy="120" r="96" fill="none" stroke="#C7C9C9" stroke-width="28"/>
+                            <circle cx="120" cy="120" r="96" fill="none" stroke="#02B2BF" stroke-width="28" stroke-dasharray="603.18" stroke-dashoffset="603.18" stroke-linecap="butt" id="animatedCircle" transform="rotate(-90 120 120)"/>
+                        </svg>
+                        <div class="donut-text">
+                            <div class="donut-label">ИИ-ТЕКСТ</div>
+                            <div class="donut-percent" id="percentValue" style="color: #02B2BF;">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card__title">Повысить оригинальность текста</div>
+                <div class="service-card__desc">До нужного процента. Без нейросетей и скрытых символов. <strong>Только ручной рерайт!</strong></div>
+                <div class="service-card__badge">Результат 100%</div>
+            </div>
+            <div class="service-card">
+                <div class="donut-wrapper">
+                    <div class="donut-inner">
+                        <svg width="100%" height="100%" viewBox="0 0 240 240" style="display: block;">
+                            <circle cx="120" cy="120" r="116" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+                            <circle cx="120" cy="120" r="76" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+                            <circle cx="120" cy="120" r="96" fill="none" stroke="#C7C9C9" stroke-width="28"/>
+                            <circle cx="120" cy="120" r="96" fill="none" stroke="#F069C3" stroke-width="28" stroke-dasharray="603.18" stroke-dashoffset="0" stroke-linecap="butt" id="animatedCircle2" transform="rotate(-90 120 120)"/>
+                        </svg>
+                        <div class="donut-text">
+                            <div class="donut-label">ОРИГИНАЛЬНОСТЬ</div>
+                            <div class="donut-percent" id="percentValue2" style="color: #F069C3;">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card__title">Убрать весь ИИ-ТЕКСТ</div>
+                <div class="service-card__desc">Находим фрагменты, сгенерированные нейросетью, и перерабатываем вручную. Надёжно, законно. Срок 1–3 суток.</div>
+                <div class="service-card__badge">Без риска</div>
+            </div>
+            <div class="service-card">
+                <ul class="stats-list">
+                    <li><div class="stats-left"><span class="stats-dot" style="background: #F069C3;"></span><span>ОРИГИНАЛЬНОСТЬ</span></div><span class="stats-value" data-target="92.89">0%</span></li>
+                    <li><div class="stats-left"><span class="stats-dot" style="background: #88AF2D;"></span><span>СОВПАДЕНИЯ</span></div><span class="stats-value" data-target="7.11">0%</span></li>
+                    <li><div class="stats-left"><span class="stats-dot" style="background: #2C69D1;"></span><span>ЦИТИРОВАНИЯ</span></div><span class="stats-value" data-target="0">0%</span></li>
+                    <li><div class="stats-left"><span class="stats-dot" style="background: #D9D9D9;"></span><span>САМОЦИТИРОВАНИЯ</span></div><span class="stats-value" data-target="0">0%</span></li>
+                    <li><div class="stats-left"><span class="stats-dot" style="background: #02B2BF;"></span><span>ИИ-ТЕКСТ</span></div><span class="stats-value" data-target="81.51">0%</span></li>
+                </ul>
+                <div class="service-card__title">Разберем отчет проверки</div>
+                <div class="service-card__desc">Профессиональная помощь: пояснения, структура, чёткое понимание результата отчёта Думейт.</div>
+                <div class="service-card__badge">Экспертно</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page__container page__section">
+        <div class="page__block page__block_center">
+            <h2 class="page__title">4 шага до повышения оригинальности или удаления ИИ-текста</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-card__number">1</div><div class="step-card__title">Написать нам</div><div class="step-card__desc">Заполните форму или напишите в мессенджеры.</div></div>
+            <div class="step-card"><div class="step-card__number">2</div><div class="step-card__title">Пришлите работу + отчет</div><div class="step-card__desc">Файл Word и подробный отчёт проверки. Мы рассчитаем стоимость и срок.</div></div>
+            <div class="step-card"><div class="step-card__number">3</div><div class="step-card__title">Оплата (предоплата 60%)</div><div class="step-card__desc">Вносите оплату — мы приступаем к работе.</div></div>
+            <div class="step-card"><div class="step-card__number">4</div><div class="step-card__title">Получаете результат</div><div class="step-card__desc">Готовый документ + свежий отчёт проверки.</div></div>
+        </div>
+        <div class="page__block page__block_center" style="margin-top: 40px;">
+            <button class="customButton customButton_main" data-modal-open>Мне нужна помощь</button>
+        </div>
+    </div>
+
+    <div class="page__container">
+        <div class="consult-grid">
+            <div class="consult-grid__title">Разберём отчет проверки с сайта <span>Думейт за 1 час</span></div>
+            <div class="consult-grid__items">
+                <div class="consult-card"><div class="consult-card__icon"><i class="fa-solid fa-check"></i></div><p>Поймёте результат, устраните сомнения и подготовите работу к сдаче без лишних правок.</p></div>
+                <div class="consult-card"><div class="consult-card__icon"><i class="fa-solid fa-check"></i></div><p>Консультация позволяет быстро разобраться в структуре отчёта, избежать лишних доработок и подготовить документ к сдаче без неопределённости.</p></div>
+                <div class="consult-card"><div class="consult-card__icon"><i class="fa-solid fa-check"></i></div><p>Консультация будет особенно полезна пользователям, которые работают с отчётом впервые или не регулярно.</p></div>
+                <div class="consult-card"><div class="consult-card__icon"><i class="fa-solid fa-check"></i></div><p>Мы подскажем, как определить значимость отдельных элементов и понять, как правильно интерпретировать результаты.</p></div>
+            </div>
+            <div class="consult-grid__note"><i class="fas fa-info-circle"></i> Обратите внимание — консультация проводится только на русском языке.</div>
+        </div>
+    </div>
+
+    <div class="page__container page__section">
+        <div class="consult-banner">
+            <div class="consult-banner__image"><img src="cta_img.png" alt="Разбор отчета"></div>
+            <div class="consult-banner__content">
+                <div class="consult-banner__title">Разберём отчёт за <span>1 час</span></div>
+                <div class="consult-banner__text">Поймёте результат, устраните сомнения и подготовите работу к сдаче без лишних правок</div>
+            </div>
+            <div class="consult-banner__button"><button class="customButton customButton_main" data-modal-open>Заказать разбор</button></div>
+        </div>
+    </div>
+
+    <div class="page__container"><img src="laptop-screen.png" class="sreen-img" alt=""></div>
+    <div class="page__container"><img src="laptop-screen2.png" style="margin-top: 36px;" class="sreen-img" alt=""></div>
+
+    <div class="page__container page__section">
+        <div class="page__block page__block_center"><h2 class="page__title">Гарантии</h2></div>
+        <div class="guarantees-grid">
+            <div class="guarantee-card"><div class="guarantee-icon"><i class="fas fa-file-invoice"></i></div><p>Работаем официально. Выдаем чек.</p></div>
+            <div class="guarantee-card"><div class="guarantee-icon"><i class="fas fa-sync-alt"></i></div><p>Бесплатная доработка в рамках поставленной задачи.</p></div>
+            <div class="guarantee-card"><div class="guarantee-icon"><i class="fas fa-undo-alt"></i></div><p>Возврат средств в случае нерешения проблемы.</p></div>
+            <div class="guarantee-card"><div class="guarantee-icon"><i class="fas fa-chart-bar"></i></div><p>Отчет проверки — вместе с работой получаете результат.</p></div>
+        </div>
+    </div>
+
+<div class="page__container page__section">
+    <div class="page__block page__block_center">
+        <h2 class="page__title">Отзывы</h2>
+    </div>
+    <div class="reviews-grid">
+        <div class="review-card">
+            <div class="review-card__author">
+                <div class="review-card__avatar">М</div>
+                <div class="review-card__name">Мария, студентка</div>
+            </div>
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__text">«Повысили оригинальность диплома с 47% до 86% за 2 дня. Ручной рерайт — супер, текст стал лучше!»</div>
+        </div>
+        <div class="review-card">
+            <div class="review-card__author">
+                <div class="review-card__avatar">А</div>
+                <div class="review-card__name">Андрей, магистр</div>
+            </div>
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__text">«Удалили ИИ-текст из курсовой. Отчёт чистый, проверку прошёл. Рекомендую!»</div>
+        </div>
+        <div class="review-card">
+            <div class="review-card__author">
+                <div class="review-card__avatar">Е</div>
+                <div class="review-card__name">Екатерина, преподаватель</div>
+            </div>
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__text">«Консультация по отчету Думейт за 1 час — наконец-то поняла все нюансы. Спасибо!»</div>
+        </div>
+        <div class="review-card">
+            <div class="review-card__author">
+                <div class="review-card__avatar">Д</div>
+                <div class="review-card__name">Дмитрий, аспирант</div>
+            </div>
+            <div class="review-card__stars">★★★★★</div>
+            <div class="review-card__text">«Обратился за разбором отчета — объяснили каждую деталь. Стало понятно, что и как исправлять. Очень доволен!»</div>
+        </div>
+    </div>
+</div>
+
+    <div class="page__container page__section">
+        <div class="page__block page__block_center"><h2 class="page__title">Вопросы и ответы</h2></div>
+        <div class="faq-grid">
+            <div class="faq-item"><div class="faq-question"><span>Как вы повышаете уникальность без ИИ?</span><i>+</i></div><div class="faq-answer">Используем только ручной рерайт: профессиональные авторы переформулируют текст, сохраняя смысл и стиль. Никаких шинглов, синонимайзеров и скрытых символов.</div></div>
+            <div class="faq-item"><div class="faq-question"><span>Что такое «разбор отчета» и как он помогает?</span><i>+</i></div><div class="faq-answer">Мы объясним структуру отчёта Антиплагиат Думейт, покажем, на какие источники и фрагменты обратить внимание, чтобы быстро исправить заимствования и сдать работу.</div></div>
+            <div class="faq-item"><div class="faq-question"><span>Выдаете ли вы чек? Работаете официально?</span><i>+</i></div><div class="faq-answer">Да, мы работаем официально, предоставляем чек об оплате и заключаем договор при необходимости.</div></div>
+            <div class="faq-item"><div class="faq-question"><span>Сколько времени занимает удаление ИИ-текста?</span><i>+</i></div><div class="faq-answer">Обычно от 1 до 3 суток, в зависимости от объёма работы. Ручная обработка требует времени, но гарантирует качество.</div></div>
+        </div>
+    </div>
+</main>
+
+<footer class="page__container">
+    <div class="footerPage">
+        <div class="footer__info">
+            <div class="footer__logo"><img style="width: 32px;" src="logo.png" alt="">ANTI-DOMATE</div>
+            <div class="footer__contacts">
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:89611944469">8 961 194-44-69</a></p>
+                <div class="footer__social">
+                    <a href="#" data-modal-open><i class="fab fa-telegram"></i></a>
+                    <a href="#" data-modal-open>
+                        <svg class="social-max" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="24" height="24">
+                            <path fill="currentColor" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__info">
+            <strong>Услуги</strong><br>
+            <a href="#" data-scroll-to="services" style="text-decoration:none; color:var(--color-text);">Повысить оригинальность</a><br>
+            <a href="#" data-scroll-to="services" style="text-decoration:none; color:var(--color-text);">Удалить ИИ-текст</a><br>
+            <a href="#" data-scroll-to="services" style="text-decoration:none; color:var(--color-text);">Разбор отчета Думейт</a>
+        </div>
+        <div class="footer__bottom">
+            <div>© 2026 Все права защищены.</div>
+            <div>Помощь с обходом проверок</div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
