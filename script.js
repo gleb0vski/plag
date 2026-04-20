@@ -25,7 +25,6 @@
             }
         });
         
-        // Закрытие по клику на ссылки в меню
         const menuLinks = mobileMenu.querySelectorAll('a');
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -33,7 +32,6 @@
             });
         });
         
-        // Закрытие по клику вне меню
         document.addEventListener('click', (e) => {
             if (mobileMenu.classList.contains('active') && 
                 !mobileMenu.contains(e.target) && 
@@ -42,7 +40,6 @@
             }
         });
         
-        // Закрытие при ресайзе окна (если стало больше 999px)
         window.addEventListener('resize', () => {
             if (window.innerWidth > 999 && mobileMenu.classList.contains('active')) {
                 closeMenu();
@@ -72,14 +69,122 @@
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (modal) modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
     
-    // Form submit
+    // Маска для телефона
+    const phoneInput = document.getElementById('formPhone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            let formatted = '';
+            if (value.length > 0) formatted = '+7';
+            if (value.length > 1) formatted += ' (' + value.slice(1, 4);
+            if (value.length > 4) formatted += ') ' + value.slice(4, 7);
+            if (value.length > 7) formatted += '-' + value.slice(7, 9);
+            if (value.length > 9) formatted += '-' + value.slice(9, 11);
+            
+            this.value = formatted;
+        });
+    }
+    
+    // Form submit with validation and PHP
     const form = document.getElementById('orderForm');
+    const formError = document.getElementById('formError');
+    const formSuccess = document.getElementById('formSuccess');
+    const submitBtn = document.getElementById('submitBtn');
+    
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-            form.reset();
-            closeModal();
+            
+            if (formError) formError.style.display = 'none';
+            if (formSuccess) formSuccess.style.display = 'none';
+            
+            const nameInput = document.getElementById('formName');
+            const phoneInputField = document.getElementById('formPhone');
+            const messageInput = document.getElementById('formMessage');
+            
+            const name = nameInput ? nameInput.value.trim() : '';
+            const phone = phoneInputField ? phoneInputField.value.trim() : '';
+            const message = messageInput ? messageInput.value.trim() : '';
+            
+            if (!name) {
+                if (formError) {
+                    formError.textContent = 'Введите ваше имя';
+                    formError.style.display = 'block';
+                }
+                return;
+            }
+            if (!phone) {
+                if (formError) {
+                    formError.textContent = 'Введите номер телефона';
+                    formError.style.display = 'block';
+                }
+                return;
+            }
+            
+            // Проверка российского номера (10 цифр после +7)
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 11) {
+                if (formError) {
+                    formError.textContent = 'Введите корректный номер телефона (10 цифр после +7)';
+                    formError.style.display = 'block';
+                }
+                return;
+            }
+            
+            if (!message) {
+                if (formError) {
+                    formError.textContent = 'Опишите вашу задачу';
+                    formError.style.display = 'block';
+                }
+                return;
+            }
+            
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправка...';
+            }
+            
+            try {
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('message', message);
+                
+                const response = await fetch('send.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    if (formSuccess) {
+                        formSuccess.style.display = 'block';
+                    }
+                    if (form) form.reset();
+                    setTimeout(() => {
+                        if (formSuccess) formSuccess.style.display = 'none';
+                        closeModal();
+                    }, 3000);
+                } else {
+                    if (formError) {
+                        formError.textContent = result.error || 'Ошибка отправки';
+                        formError.style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                if (formError) {
+                    formError.textContent = 'Ошибка отправки. Попробуйте позже или напишите в Telegram.';
+                    formError.style.display = 'block';
+                }
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Отправить заявку';
+                }
+            }
         });
     }
     

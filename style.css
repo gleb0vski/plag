@@ -1017,3 +1017,30 @@ body {
 .headerPage__phone:hover {
     color:#1A56CC;
 }
+
+.hero-img {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .hero-img {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .service-card img {
+        margin-bottom: 0;
+    }
+
+    .donut-inner {
+        display: none;
+    }
+    
+    .stats-list {
+        display: none;
+    }
+
+    .consult-banner__content {
+        padding: 0;
+    }
+}
